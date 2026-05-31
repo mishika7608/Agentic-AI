@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -263,6 +264,27 @@ app.get('/api/agent/info', (req, res) => {
     authentication: 'ServiceNow Basic Auth (username/password)',
     createdAt: '2026-05-24T00:00:00Z'
   });
+});
+
+// Resolution Plan Agent Endpoint: Generate resolution plan for top incident
+app.post('/api/incidents/generate-resolution', async (req, res) => {
+  try {
+    console.log('\n🚀 [ENDPOINT] POST /api/incidents/generate-resolution');
+    console.log(`⏰ Request received at: ${new Date().toISOString()}`);
+    
+    const agentResult = await agent.executeResolutionAgent(serviceNowAPI);
+    
+    res.status(agentResult.success ? 200 : 500).json(agentResult);
+  } catch (error) {
+    console.error('❌ [ENDPOINT] Error in generate-resolution:', error.message);
+    res.status(500).json({
+      success: false,
+      agentStatus: 'ERROR',
+      agentName: 'Incident Resolution Plan Agent',
+      message: 'Failed to generate resolution plan',
+      error: error.message
+    });
+  }
 });
 
 // Error handling middleware

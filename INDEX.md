@@ -54,6 +54,39 @@ Choose a guide based on what you need:
 - Performance optimization strategies
 - Perfect for: Technical deep dive and development
 
+### 🤖 **[RESOLUTION_AGENT_QUICK_REFERENCE.md](RESOLUTION_AGENT_QUICK_REFERENCE.md)** ⭐ NEW
+**Quick Reference for Resolution Plan Agent (5 minutes)**
+- Quick start commands
+- API endpoint reference
+- Response formats
+- Testing procedures
+- Common scenarios
+- Troubleshooting
+- Perfect for: Using the resolution plan agent
+
+### 📘 **[RESOLUTION_AGENT_GUIDE.md](RESOLUTION_AGENT_GUIDE.md)** ⭐ NEW
+**Complete Resolution Agent Documentation (20 minutes)**
+- Agent architecture
+- Component descriptions
+- Workflow diagrams
+- API endpoint details
+- Resolution plan customization
+- Error handling guide
+- Integration examples
+- Performance metrics
+- Perfect for: Understanding and extending the agent
+
+### 📗 **[DEPLOYMENT_SUMMARY.md](DEPLOYMENT_SUMMARY.md)** ⭐ NEW
+**Deployment Status Report**
+- Deployment checklist
+- What was implemented
+- Test results
+- Performance metrics
+- File changes summary
+- Usage instructions
+- Verification checklist
+- Perfect for: Understanding the current state and deployment readiness
+
 ### 📊 **[PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)**
 **Project Overview**
 - Feature checklist (all requirements met)

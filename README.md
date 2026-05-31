@@ -115,6 +115,11 @@ A responsive web application that integrates with ServiceNow to manage and visua
 | GET | `/api/incidents/assignment-group` | Get incidents grouped by assignment group |
 | GET | `/api/incidents/empty-assignment` | Get incidents with empty assignment group |
 | POST | `/api/incidents/update-work-notes` | Update work notes for empty assignment incidents |
+| **POST** | **`/api/incidents/generate-resolution`** | **Generate & apply AI resolution plan to top incident** |
+| GET | `/api/agent/status` | Get agent health and capabilities |
+| GET | `/api/agent/info` | Get agent configuration details |
+
+**NEW**: The Resolution Plan Agent automatically generates contextual resolution plans and updates incident work notes.
 
 ## Usage
 
@@ -130,6 +135,24 @@ A responsive web application that integrates with ServiceNow to manage and visua
 2. Click "Update Work Notes" button
 3. All incidents with empty assignment groups will be updated with:
    > "We are going to update Assignment group as 'Incident Management'"
+
+### Generating Resolution Plans (NEW)
+
+The Resolution Plan Agent can be triggered to automatically:
+1. Fetch the newest incident from ServiceNow
+2. Generate a contextual resolution plan based on priority and category
+3. Update the incident's work notes with the plan
+
+**PowerShell Example:**
+```powershell
+$response = Invoke-RestMethod -Method Post `
+  -Uri 'http://localhost:5000/api/incidents/generate-resolution' `
+  -ContentType 'application/json'
+
+Write-Host "Resolution plan applied to: $($response.incidentDetails.number)"
+```
+
+For complete documentation, see [RESOLUTION_AGENT_QUICK_REFERENCE.md](RESOLUTION_AGENT_QUICK_REFERENCE.md).
 
 ## Features in Detail
 
@@ -147,6 +170,13 @@ A responsive web application that integrates with ServiceNow to manage and visua
 - Horizontal bar chart for assignment group performance
 - Shows incident load per team
 - Identifies underutilized and overloaded groups
+
+### 4. Resolution Plan Agent (NEW)
+- Automatically generates resolution plans for incidents
+- Customizes plans based on incident priority and category
+- Updates incident work notes via PATCH
+- Provides detailed execution metrics and logging
+- Supports hardware, software, network, and general issues
 
 ### 4. Empty Assignment Management
 - Real-time identification of unassigned incidents
